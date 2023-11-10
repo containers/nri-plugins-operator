@@ -1,0 +1,8 @@
+---
+- version: v1alpha1
+  group: apps.nri.io
+  kind: PluginConfig
+  playbook: playbooks/pluginconfig.yml
+  snakeCaseParameters: False
+  manageStatus: True
+#+kubebuilder:scaffold:watch

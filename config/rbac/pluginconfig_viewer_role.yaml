@@ -1,0 +1,27 @@
+# permissions for end users to view pluginconfigs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: pluginconfig-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: nri-plugins-operator
+    app.kubernetes.io/part-of: nri-plugins-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: pluginconfig-viewer-role
+rules:
+- apiGroups:
+  - apps.nri.io
+  resources:
+  - pluginconfigs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps.nri.io
+  resources:
+  - pluginconfigs/status
+  verbs:
+  - get
