@@ -28,8 +28,8 @@ BUNDLE_METADATA_OPTS ?= $(BUNDLE_CHANNELS) $(BUNDLE_DEFAULT_CHANNEL)
 # This variable is used to construct full image tags for bundle and catalog images.
 #
 # For example, running 'make bundle-build bundle-push catalog-build catalog-push' will build and push both
-# nri.io/nri-plugins-operator-bundle:$VERSION and nri.io/nri-plugins-operator-catalog:$VERSION.
-IMAGE_TAG_BASE ?= nri.io/nri-plugins-operator
+# ghcr.io/containers/nri-plugins-operator-bundle:$VERSION and ghcr.io/containers/nri-plugins-operator-catalog:$VERSION.
+IMAGE_TAG_BASE ?= ghcr.io/containers/nri-plugins-operator
 
 # BUNDLE_IMG defines the image:tag used for the bundle.
 # You can use it as an arg. (E.g make bundle-build BUNDLE_IMG=<some-registry>/<project-name-bundle>:<tag>)
@@ -51,23 +51,12 @@ endif
 OPERATOR_SDK_VERSION ?= v1.32.0
 
 # Image URL to use all building/pushing image targets
-IMG ?= docker.io/fmuyassarov/nri:dev
+IMG ?= ghcr.io/containers/nri-plugins-operator:unstable
 
 .PHONY: all
 all: docker-build
 
 ##@ General
-
-# The help target prints out all targets with their descriptions organized
-# beneath their categories. The categories are represented by '##@' and the
-# target descriptions by '##'. The awk commands is responsible for reading the
-# entire set of makefiles included in this invocation, looking for lines of the
-# file as xyz: ## something, and then pretty-format the target and help. Then,
-# if there's a line with ##@ something, that gets pretty-printed as a category.
-# More info on the usage of ANSI control characters for terminal formatting:
-# https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_parameters
-# More info on the awk command:
-# http://linuxcommand.org/lc3_adv_awk.php
 
 .PHONY: help
 help: ## Display this help.

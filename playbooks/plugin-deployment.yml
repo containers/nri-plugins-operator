@@ -6,4 +6,4 @@
     - operator_sdk.util
   tasks:
     - import_role:
-        name: "pluginconfig"
+        name: "plugin-deployment"

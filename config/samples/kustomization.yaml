@@ -1,4 +1,4 @@
 ## Append samples of your project ##
 resources:
-- apps_v1alpha1_pluginconfig.yaml
+- config.nri_v1alpha1_nriplugindeployment.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples

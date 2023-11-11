@@ -5,85 +5,26 @@ metadata:
   name: manager-role
 rules:
   ##
-  ## Base operator rules
+  ## Rules for the operator
   ##
   - apiGroups:
-      - rbac.authorization.k8s.io
+      - config.nri
     resources:
-      - clusterroles
-      - clusterrolebindings
-      - roles
-      - rolebindings
+      - nriplugindeployments
     verbs:
-      - create
-      - delete
       - get
       - list
-      - patch
-      - update
       - watch
+      - update
   - apiGroups:
-      - ""
+      - config.nri
     resources:
-      - secrets
-      - pods
-      - pods/exec
-      - pods/log
-      - serviceaccounts
-      - configmaps
+      - nriplugindeployments/status
     verbs:
-      - create
-      - delete
       - get
-      - list
-      - patch
       - update
-      - watch
+      - patch
   - apiGroups:
-      - apps
-    resources:
-      - deployments
-      - daemonsets
-      - replicasets
-      - statefulsets
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  ##
-  ## Rules for apps.nri.io/v1alpha1, Kind: PluginConfig
-  ##
-  - apiGroups:
-      - apps.nri.io
-    resources:
-      - pluginconfigs
-      - pluginconfigs/status
-      - pluginconfigs/finalizers
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:
-      - topology.node.k8s.io
-    resources:
-      - noderesourcetopologies
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:  # 2nd API group
       - apiextensions.k8s.io
     resources:
       - customresourcedefinitions
@@ -95,32 +36,23 @@ rules:
       - patch
       - update
       - watch
-#+kubebuilder:scaffold:rules
+  ##
+  ## Rules for config.nri/v1alpha1, Kind: NriPluginDeployment
+  ##
   - verbs:
     - "*"
     apiGroups:
     - "rbac.authorization.k8s.io"
+    - "apps"
+    - ""
     resources:
     - "clusterrolebindings"
     - "clusterroles"
-  - verbs:
-    - "*"
-    apiGroups:
-    - "rbac.authorization.k8s.io"
-    resources:
     - "rolebindings"
     - "roles"
-  - verbs:
-    - "*"
-    apiGroups:
-    - "apps"
-    resources:
     - "daemonsets"
-  - verbs:
-    - "*"
-    apiGroups:
-    - ""
-    resources:
     - "configmaps"
     - "serviceaccounts"
     - "namespaces"
+    - "secrets"
+ #+kubebuilder:scaffold:rules

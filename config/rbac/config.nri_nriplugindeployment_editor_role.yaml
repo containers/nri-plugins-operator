@@ -1,20 +1,20 @@
-# permissions for end users to edit pluginconfigs.
+# permissions for end users to edit nriplugindeployments.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
     app.kubernetes.io/name: clusterrole
-    app.kubernetes.io/instance: pluginconfig-editor-role
+    app.kubernetes.io/instance: nriplugindeployment-editor-role
     app.kubernetes.io/component: rbac
     app.kubernetes.io/created-by: nri-plugins-operator
     app.kubernetes.io/part-of: nri-plugins-operator
     app.kubernetes.io/managed-by: kustomize
-  name: pluginconfig-editor-role
+  name: nriplugindeployment-editor-role
 rules:
 - apiGroups:
-  - apps.nri.io
+  - config.nri
   resources:
-  - pluginconfigs
+  - nriplugindeployments
   verbs:
   - create
   - delete
@@ -24,8 +24,8 @@ rules:
   - update
   - watch
 - apiGroups:
-  - apps.nri.io
+  - config.nri
   resources:
-  - pluginconfigs/status
+  - nriplugindeployments/status
   verbs:
   - get
