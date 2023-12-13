@@ -19,6 +19,7 @@
         wait: True
         create_namespace: True
         values: "{{ values | default({}) }}"
+        skip_crds: True
   when:
   - state == "present"
   - pluginName in ["topology-aware", "balloons", "memory-qos", "memtierd", "sgx-epc"]
