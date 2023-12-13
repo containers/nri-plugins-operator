@@ -3,4 +3,5 @@
 # It should be run by config/default
 resources:
 - bases/config.nri_nriplugindeployments.yaml
+- bases/topology.node.k8s.io_noderesourcetopologies.yaml
 #+kubebuilder:scaffold:crdkustomizeresource
